@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Beefeater</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://aframe.io/releases/1.4.2/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mind-ar@1.2.2/dist/mindar-image-aframe.prod.js"></script>
+
+  <!-- Inserting custom JavaScript component to handle texture change -->
+  <script>
+    AFRAME.registerComponent('model-texture', {
+      schema: {
+        src: {type: 'selector'}
+      },
+
+      update: function () {
+        const object = this.el.getObject3D('mesh');
+        const texture = new THREE.TextureLoader().load(this.data.src.src);
+
+        if (object) {
+          object.traverse(node => {
+            if (node.isMesh) {
+              node.material.map = texture;
+              node.material.transparent = true;  // Allow material to use transparency from texture.
+              node.material.alphaTest = 0.0;     // Discard fragment if alpha value is below this threshold.
+              node.material.needsUpdate = true;  // Tell three.js to update this material next frame.
+              node.material.side = THREE.DoubleSide;
+            }
+          });
+        } else {
+          this.el.addEventListener('model-loaded', () => this.update());
+        }
+      }
+    });
+  </script>
+
+  <style>
+    #logo-container {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 1000;
+    }
+    #logo {
+      width: 120px;
+      height: auto;
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="logo-container">
+  <img src="mg.jpeg" alt="Logo" id="logo">
+</div>
+
+
+<a-scene mindar-image="imageTargetSrc: /targets.mind; maxTrack: 2; filterMinCF:0.00005; filterBeta: 10000;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+  <a-assets>
+    <!-- Load the textures -->
+    <img id="tex_003_X02" src="003_X02 FOREGROUND.png">
+    <img id="tex_003_X03" src="003_X03 MIDGROUND.png">
+    <img id="tex_003_X04" src="003_X04 MIDGROUND2.png">
+    <img id="tex_003_X05" src="003_X05 BACKGROUND.png">
+    <img id="tex_003_X06" src="003_X06 BACKGROUND2.png">
+  </a-assets>
+
+  <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+
+  <a-entity mindar-image-target="targetIndex: 0">
+    <a-entity position="0 -0.25 0">
+      <a-cylinder position="0 0 0" radius="0.2" height="1" color="#fff"
+                  material="opacity: 0; transparent: true; side: double;"></a-cylinder>
+
+      <a-cylinder model-texture="src: #tex_003_X06"
+                  animation__rotate="property: rotation; to: 0 360 0; dur: 9000; easing: linear; loop: true"
+                  animation__position="property: position; from: 0 -0.1 0; to: 0 0.1 0; dir: alternate; dur: 15000; loop: true"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.65 0.65 0.65" ></a-cylinder>
+
+      <a-cylinder model-texture="src: #tex_003_X05"
+                  animation="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.72 0.72 0.72" ></a-cylinder>
+
+      <a-cylinder model-texture="src: #tex_003_X04"
+                  animation="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.75 0.75 0.75" ></a-cylinder>
+
+      <a-cylinder model-texture="src: #tex_003_X03"
+                  animation="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0"  scale="0.80 0.80 0.80" ></a-cylinder>
+
+      <a-cylinder model-texture="src: #tex_003_X02"
+                  animation="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.85 0.85 0.85"></a-cylinder>
+
+    </a-entity>
+  </a-entity>
+</a-scene>
+</body>
+</html>
