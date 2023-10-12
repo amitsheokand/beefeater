@@ -59,7 +59,7 @@
 </div>
 
 
-<a-scene mindar-image="imageTargetSrc: /targets.mind; maxTrack: 2; filterMinCF:0.00005; filterBeta: 10000;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+<a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/amitsheokand/beefeater@main/targets.mind; maxTrack: 2; filterMinCF:0.00005; filterBeta: 10000;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
   <a-assets>
     <!-- Load the textures -->
     <img id="tex_003_X02" src="003_X02 FOREGROUND.png">
@@ -72,7 +72,7 @@
   <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
 
   <a-entity mindar-image-target="targetIndex: 0">
-    <a-entity position="0 -0.25 0">
+    <a-entity position="0 -0.2 0">
       <a-cylinder position="0 0 0" radius="0.2" height="1" color="#fff"
                   material="opacity: 0; transparent: true; side: double;"></a-cylinder>
 
