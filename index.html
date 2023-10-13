@@ -36,6 +36,21 @@
         }
       }
     });
+
+    AFRAME.registerComponent('ar-tracking-listener', {
+      init: function () {
+        this.el.sceneEl.addEventListener('ar-camera-tracking-changed', (event) => {
+          if (!event.detail.tracked) {
+            // Trigger fade-out animation when tracking is lost
+            this.el.emit('trackingLost');
+          } else {
+            // Trigger fade-in animation when tracking is regained
+            this.el.emit('trackingRegained');
+          }
+        });
+      }
+    });
+
   </script>
 
   <style>
@@ -59,7 +74,7 @@
 </div>
 
 
-<a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/amitsheokand/beefeater@main/targets.mind; maxTrack: 2; filterMinCF:0.00005; filterBeta: 10000;" color-space="sRGB" renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false">
+<a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/amitsheokand/beefeater@main/targets.mind; maxTrack: 2; filterMinCF:0.0001; filterBeta: 0.001 warmupTolerance: 1; missTolerance: 150"  renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" >
   <a-assets>
     <!-- Load the textures -->
     <img id="tex_003_X02" src="003_X02 FOREGROUND.png">
@@ -69,10 +84,10 @@
     <img id="tex_003_X06" src="003_X06 BACKGROUND2.png">
   </a-assets>
 
-  <a-camera position="0 0 0" look-controls="enabled: false"></a-camera>
+  <a-camera position="0 0 0" look-controls="smoothingEnabled: true; smoothingFactor: 0.35"></a-camera>
 
-  <a-entity mindar-image-target="targetIndex: 0">
-    <a-entity position="0 -0.2 0">
+  <a-entity mindar-image-target="targetIndex: 0" >
+    <a-entity position="0 -0.3 0">
       <a-cylinder position="0 0 0" radius="0.2" height="1" color="#fff"
                   material="opacity: 0; transparent: true; side: double;"></a-cylinder>
 
@@ -95,7 +110,7 @@
 
       <a-cylinder model-texture="src: #tex_003_X02"
                   animation="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.85 0.85 0.85"></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.95 0.95 0.95"></a-cylinder>
 
     </a-entity>
   </a-entity>

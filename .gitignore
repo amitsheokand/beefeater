@@ -3,3 +3,6 @@
 dist.zip
 /node_modules/
 /dist/
+.idea/beefeater.iml
+.idea/modules.xml
+.idea/vcs.xml
