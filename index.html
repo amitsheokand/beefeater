@@ -74,46 +74,233 @@
 </div>
 
 
-<a-scene mindar-image="imageTargetSrc: https://cdn.jsdelivr.net/gh/amitsheokand/beefeater@main/targets.mind; maxTrack: 2; filterMinCF:0.0001; filterBeta: 0.001 warmupTolerance: 1; missTolerance: 150"  renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" >
+<a-scene mindar-image="imageTargetSrc: https://cdn.statically.io/gh/amitsheokand/beefeater/main/public/targets.mind; maxTrack: 2; filterMinCF:0.0001; filterBeta: 0.001 warmupTolerance: 1; missTolerance: 60"  renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" >
   <a-assets>
-    <!-- Load the textures -->
-    <img id="tex_003_X02" src="003_X02 FOREGROUND.png">
-    <img id="tex_003_X03" src="003_X03 MIDGROUND.png">
-    <img id="tex_003_X04" src="003_X04 MIDGROUND2.png">
-    <img id="tex_003_X05" src="003_X05 BACKGROUND.png">
-    <img id="tex_003_X06" src="003_X06 BACKGROUND2.png">
+    <!-- loading image -->
+    <img id="GintansticLogo" src="003_X13 GINTASTIC LOGO.png">
+
+    <!-- 1st animation -->
+    <img id="tex_003_X02" src="anim1/003_X02 FOREGROUND.png">
+    <img id="tex_003_X03" src="anim1/003_X03 MIDGROUND.png">
+    <img id="tex_003_X04" src="anim1/003_X04 MIDGROUND2.png">
+    <img id="tex_003_X05" src="anim1/003_X05 BACKGROUND.png">
+    <img id="tex_003_X06" src="anim1/003_X06 BACKGROUND2.png">
+
+    <!-- 2nd animation -->
+    <img id="tex_003_X07" src="anim2/003_X07 MIDGROUND_Botanicals.png">
+
+    <!-- 3rd animation -->
+    <img id="tex_003_X09" src="anim3/003_X09 FOREGROUND.png">
+    <img id="tex_003_X10" src="anim3/003_X10 MIDGROUND 01.png">
+    <img id="tex_003_X11" src="anim3/003_X11 BACKGROUND 01.png">
+    <img id="tex_003_X12" src="anim3/003_X12 BACKGROUND 02.png">
+
   </a-assets>
 
-  <a-camera position="0 0 0" look-controls="smoothingEnabled: true; smoothingFactor: 0.35"></a-camera>
+  <a-camera position="0 0 0" ></a-camera>
 
-  <a-entity mindar-image-target="targetIndex: 0" >
+  <a-entity mindar-image-target="targetIndex: 0">
     <a-entity position="0 -0.3 0">
-      <a-cylinder position="0 0 0" radius="0.2" height="1" color="#fff"
-                  material="opacity: 0; transparent: true; side: double;"></a-cylinder>
 
-      <a-cylinder model-texture="src: #tex_003_X06"
-                  animation__rotate="property: rotation; to: 0 360 0; dur: 9000; easing: linear; loop: true"
+      <a-plane src="#GintansticLogo" position="0 0.2 0"
+               material="side: double; transparent: true;"
+               animation="property: material.opacity; from: 1; to: 0; delay: 0000; dur: 9000; startEvents: startLogoAnimation" >
+      </a-plane>
+
+
+      <a-cylinder position="0 0 0" radius="0.2" height="1" color="#fff" material="opacity: 0; transparent: true; side: double;"></a-cylinder>
+
+      <a-cylinder id="cylinder5" model-texture="src: #tex_003_X06"  visible="false" material="side: double"
+                  animation__rotate="property: rotation; to: 0 360 0; dur: 9000; easing: linear; loop: true; startEvents: startReel1"
                   animation__position="property: position; from: 0 -0.1 0; to: 0 0.1 0; dir: alternate; dur: 15000; loop: true"
                   radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.65 0.65 0.65" ></a-cylinder>
 
-      <a-cylinder model-texture="src: #tex_003_X05"
-                  animation="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true"
+      <a-cylinder id="cylinder4" model-texture="src: #tex_003_X05" visible="false" material="side: double transparent: true"
+                  animation__reel0="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true; startEvents: startReel1"
                   radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.72 0.72 0.72" ></a-cylinder>
 
-      <a-cylinder model-texture="src: #tex_003_X04"
-                  animation="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true"
+      <a-cylinder id="cylinder3" model-texture="src: #tex_003_X04" visible="false" material="side: double transparent: true"
+                  animation__reel0="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true; startEvents: startReel1"
                   radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.75 0.75 0.75" ></a-cylinder>
 
-      <a-cylinder model-texture="src: #tex_003_X03"
-                  animation="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0"  scale="0.80 0.80 0.80" ></a-cylinder>
+      <a-cylinder id="cylinder2" model-texture="src: #tex_003_X03" visible="false" material="side: double transparent: true"
+                  animation__reel0="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true; startEvents: startReel1"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.8 0.8 0.8"></a-cylinder>
 
-      <a-cylinder model-texture="src: #tex_003_X02"
-                  animation="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true"
+      <a-cylinder id="cylinder1" model-texture="src: #tex_003_X02" visible="false" material="side: double; transparent: true"
+                  animation__reel0="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true; startEvents: startReel1"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.95 0.95 0.95"></a-cylinder>
+
+
+      <a-cylinder id="cylinder8" model-texture="src: #tex_003_X05" visible="false" material="side: double transparent: true"
+                  animation__reel1="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true; startEvents: startReel2"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.75 0.75 0.75" ></a-cylinder>
+
+      <a-cylinder id="cylinder7" model-texture="src: #tex_003_X07" visible="false" material="side: double transparent: true"
+                  animation__reel1="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true; startEvents: startReel2"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.8 0.8 0.8"></a-cylinder>
+
+      <a-cylinder id="cylinder6" model-texture="src: #tex_003_X02" visible="false" material="side: double transparent: true"
+                  animation__reel1="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true; startEvents: startReel2"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.95 0.95 0.95"></a-cylinder>
+
+      <a-cylinder id="cylinder12" model-texture="src: #tex_003_X12" visible="false" material="side: double transparent: true"
+                  animation__reel2="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true; startEvents: startReel3"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.72 0.72 0.72" ></a-cylinder>
+
+      <a-cylinder id="cylinder11" model-texture="src: #tex_003_X11" visible="false" material="side: double transparent: true"
+                  animation__reel2="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true; startEvents: startReel3"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.75 0.75 0.75" ></a-cylinder>
+
+      <a-cylinder id="cylinder10" model-texture="src: #tex_003_X10" visible="false" material="side: double transparent: true"
+                  animation__reel2="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true; startEvents: startReel3"
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.8 0.8 0.8"></a-cylinder>
+
+      <a-cylinder id="cylinder9" model-texture="src: #tex_003_X09" visible="false" material="side: double transparent: true"
+                  animation__reel2="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true; startEvents: startReel3"
                   radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.95 0.95 0.95"></a-cylinder>
 
     </a-entity>
   </a-entity>
 </a-scene>
+
+<script>
+
+  document.addEventListener("DOMContentLoaded", function() {
+    let currentReel = 0;
+    const reels = [
+      ['#cylinder1', '#cylinder2', '#cylinder3', '#cylinder4', '#cylinder5'],
+      ['#cylinder6', '#cylinder7', '#cylinder8'],
+      ['#cylinder9', '#cylinder10', '#cylinder11', '#cylinder12']
+    ];
+
+    const reelDurations = [9000, 6000, 8000]; // Assuming the longest animation duration for each reel.
+    const logoPlane = document.querySelector('a-plane[src="#GintansticLogo"]');
+
+    document.querySelector('a-scene').addEventListener('loaded', function() {
+      logoPlane.emit('startLogoAnimation');
+    });
+
+    function hideAllCylinders() {
+      for (let i = 1; i <= 12; i++) {
+        document.querySelector(`#cylinder${i}`).setAttribute('visible', 'false');
+      }
+    }
+
+    function restartLogoAnimation() {
+      logoPlane.emit('startLogoAnimation'); // Emit the event to start the logo animation.
+      hideAllCylinders();
+    }
+
+
+    function startReel(reel) {
+      hideAllCylinders(); // Hide all cylinders before starting the reel
+
+      reel.forEach(cylinderId => {
+        const cylinder = document.querySelector(cylinderId);
+        cylinder.setAttribute('visible', 'true'); // Make current cylinder visible
+
+        switch(currentReel) {
+          case 0:
+            console.log("Starting Reel 1");
+            cylinder.emit('startReel1');
+            break;
+          case 1:
+            console.log("Starting Reel 2");
+            cylinder.emit('startReel2');
+            break;
+          case 2:
+            console.log("Starting Reel 3");
+            cylinder.emit('startReel3');
+            break;
+        }
+      });
+
+      if (currentReel < 2) {
+        setTimeout(() => {
+          currentReel++;
+          startReel(reels[currentReel]);
+        }, reelDurations[currentReel] + 500); // 500ms buffer after each reel completes
+      } else {
+        // After all reels are complete, restart from Gintastic animation.
+        setTimeout(() => {
+          currentReel = 0;
+          restartLogoAnimation();
+        }, 5000);
+      }
+    }
+
+    document.querySelector('a-plane[src="#GintansticLogo"]').addEventListener('animationcomplete', function(evt) {
+      evt.stopPropagation();
+      console.log("Gintastic Logo animation completed");
+      setTimeout(() => startReel(reels[currentReel]), 200);
+    });
+
+  });
+
+  AFRAME.registerComponent("listener", {
+    init: function() {
+      this.target = this.el;
+      this.prevPosition = null; // initially there is no position or rotation
+      this.prevRotation = null;
+    },
+
+    tick: function() {
+      if (this.el.object3D.visible) {
+        this.target.setAttribute('visible', 'true')
+
+        if(!this.prevPosition && !this.prevRotation) {
+          // there are no values to lerp from - set the initial values
+          this.target.setAttribute('position', this.el.getAttribute('position'))
+          this.target.setAttribute('rotation', this.el.getAttribute('rotation'))
+        } else {
+          // use the previous values to get an approximation
+          this.target.object3D.position.lerp(this.prevPosition, 0.1)
+
+          // this (below) may seem ugly, but the rotation is a euler, not a THREE.Vector3,
+          // so to use the lerp function i'm doing some probably unnecessary conversions
+          let rotVector = new THREE.Vector3();
+          rotVector.setFromEuler(this.target.object3D.rotation);
+          rotVector.lerp(this.prevRotation, 0.1);
+          this.target.object3D.rotation.setFromVector3(rotVector);
+        }
+        // update the values
+        this.prevPosition = this.el.object3D.position
+        this.prevRotation = this.el.object3D.rotation
+      } else {
+        // the marker dissapeared - reset the values
+        this.target.setAttribute('visible', 'false')
+        this.prevPosition = null;
+        this.prevRotation = null;
+      }
+    }
+  })
+
+
+  AFRAME.registerComponent('debug-position', {
+    init: function() {
+      // This function will be triggered every 1000ms (1 second)
+      this.interval = setInterval(() => {
+        this.debugPositions();
+      }, 1000);
+    },
+
+    // This function will print the position of all the cylinders
+    debugPositions: function() {
+      for (let i = 1; i <= 12; i++) {
+        const cylinder = document.querySelector(`#cylinder${i}`);
+        if (cylinder) {
+          console.log(`Position of #cylinder${i}:`, cylinder.getAttribute('position'));
+        }
+      }
+    },
+
+    // Make sure to clear the interval when the component is removed to prevent memory leaks
+    remove: function() {
+      clearInterval(this.interval);
+    }
+  });
+
+</script>
 </body>
 </html>
