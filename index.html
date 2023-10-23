@@ -74,7 +74,7 @@
 </div>
 
 
-<a-scene mindar-image="imageTargetSrc: https://cdn.statically.io/gh/amitsheokand/beefeater/main/public/targets-bs.mind; maxTrack: 2; filterMinCF:0.0001; filterBeta: 0.001 warmupTolerance: 1; missTolerance: 60"  renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" >
+<a-scene mindar-image="imageTargetSrc: https://cdn.statically.io/gh/amitsheokand/beefeater/main/public/targets.mind; maxTrack: 2; filterMinCF:0.0001; filterBeta: 0.001 warmupTolerance: 1; missTolerance: 60"  renderer="colorManagement: true, physicallyCorrectLights" vr-mode-ui="enabled: false" device-orientation-permission-ui="enabled: false" >
   <a-assets>
     <!-- loading image -->
     <img id="GintansticLogo" src="003_X13 GINTASTIC LOGO.png">
@@ -100,9 +100,9 @@
   <a-camera position="0 0 0" ></a-camera>
 
   <a-entity mindar-image-target="targetIndex: 0">
-    <a-entity position="0 -0.3 0">
+    <a-entity position="0 -0.1 0">
 
-      <a-plane src="#GintansticLogo" position="0 0.2 0"
+      <a-plane src="#GintansticLogo" position="0 0 0"
                material="side: double; transparent: true;"
                animation="property: material.opacity; from: 1; to: 0; delay: 0000; dur: 9000; startEvents: startLogoAnimation" >
       </a-plane>
@@ -113,52 +113,52 @@
       <a-cylinder id="cylinder5" model-texture="src: #tex_003_X06"  visible="false" material="side: double"
                   animation__rotate="property: rotation; to: 0 360 0; dur: 9000; easing: linear; loop: true; startEvents: startReel1"
                   animation__position="property: position; from: 0 -0.1 0; to: 0 0.1 0; dir: alternate; dur: 15000; loop: true"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.65 0.65 0.65" ></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.75 0.75 0.75" ></a-cylinder>
 
       <a-cylinder id="cylinder4" model-texture="src: #tex_003_X05" visible="false" material="side: double transparent: true"
                   animation__reel0="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true; startEvents: startReel1"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.72 0.72 0.72" ></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.85 0.85 0.85" ></a-cylinder>
 
       <a-cylinder id="cylinder3" model-texture="src: #tex_003_X04" visible="false" material="side: double transparent: true"
                   animation__reel0="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true; startEvents: startReel1"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.75 0.75 0.75" ></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.9 0.9 0.9" ></a-cylinder>
 
       <a-cylinder id="cylinder2" model-texture="src: #tex_003_X03" visible="false" material="side: double transparent: true"
                   animation__reel0="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true; startEvents: startReel1"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.8 0.8 0.8"></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="1 1 1"></a-cylinder>
 
       <a-cylinder id="cylinder1" model-texture="src: #tex_003_X02" visible="false" material="side: double; transparent: true"
                   animation__reel0="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true; startEvents: startReel1"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.95 0.95 0.95"></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="1.1 1.1 1.1"></a-cylinder>
 
 
       <a-cylinder id="cylinder8" model-texture="src: #tex_003_X05" visible="false" material="side: double transparent: true"
                   animation__reel1="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true; startEvents: startReel2"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.75 0.75 0.75" ></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.9 0.9 0.9" ></a-cylinder>
 
       <a-cylinder id="cylinder7" model-texture="src: #tex_003_X07" visible="false" material="side: double transparent: true"
                   animation__reel1="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true; startEvents: startReel2"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.8 0.8 0.8"></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="1 1 1"></a-cylinder>
 
       <a-cylinder id="cylinder6" model-texture="src: #tex_003_X02" visible="false" material="side: double transparent: true"
                   animation__reel1="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true; startEvents: startReel2"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.95 0.95 0.95"></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="1.1 1.1 1.1"></a-cylinder>
 
       <a-cylinder id="cylinder12" model-texture="src: #tex_003_X12" visible="false" material="side: double transparent: true"
                   animation__reel2="property: rotation; to: 0 360 0; dur: 8000; easing: linear; loop: true; startEvents: startReel3"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.72 0.72 0.72" ></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.78 0.78 0.78" ></a-cylinder>
 
       <a-cylinder id="cylinder11" model-texture="src: #tex_003_X11" visible="false" material="side: double transparent: true"
                   animation__reel2="property: rotation; to: 0 360 0; dur: 6000; easing: linear; loop: true; startEvents: startReel3"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.75 0.75 0.75" ></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.85 0.85 0.85" ></a-cylinder>
 
       <a-cylinder id="cylinder10" model-texture="src: #tex_003_X10" visible="false" material="side: double transparent: true"
                   animation__reel2="property: rotation; to: 0 360 0; dur: 5000; easing: linear; loop: true; startEvents: startReel3"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.8 0.8 0.8"></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.95 0.95 0.95"></a-cylinder>
 
       <a-cylinder id="cylinder9" model-texture="src: #tex_003_X09" visible="false" material="side: double transparent: true"
                   animation__reel2="property: rotation; to: 0 360 0; dur: 4000; easing: linear; loop: true; startEvents: startReel3"
-                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="0.95 0.95 0.95"></a-cylinder>
+                  radius="0.5" height="1" open-ended="true" position="0 0 0" scale="1.1 1.1 1.1"></a-cylinder>
 
     </a-entity>
   </a-entity>
