@@ -100,15 +100,15 @@
   <a-camera position="0 0 0" ></a-camera>
 
   <a-entity mindar-image-target="targetIndex: 0">
-    <a-entity position="0 -0.1 0">
+    <a-entity position="0 -0.6 0" scale="2 2 2">
 
-      <a-plane src="#GintansticLogo" position="0 0 0"
+      <a-plane src="#GintansticLogo" position="0 0.1 0"
                material="side: double; transparent: true;"
                animation="property: material.opacity; from: 1; to: 0; delay: 0000; dur: 9000; startEvents: startLogoAnimation" >
       </a-plane>
 
 
-      <a-cylinder position="0 0 0" radius="0.2" height="1" color="#fff" material="opacity: 0; transparent: true; side: double;"></a-cylinder>
+      <a-cylinder position="0 0 0" radius="0.25" height="2" color="#fff" material="opacity: 0; transparent: true; side: double;"></a-cylinder>
 
       <a-cylinder id="cylinder5" model-texture="src: #tex_003_X06"  visible="false" material="side: double"
                   animation__rotate="property: rotation; to: 0 360 0; dur: 9000; easing: linear; loop: true; startEvents: startReel1"
